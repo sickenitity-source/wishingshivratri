@@ -1,148 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Wellness.ai – Mental Wellness Support Bot</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #0f172a;
-      color: #e5e7eb;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-    }
-
-    .container {
-      width: 400px;
-      background: #020617;
-      border-radius: 10px;
-      padding: 20px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.5);
-    }
-
-    h1 {
-      text-align: center;
-      color: #38bdf8;
-    }
-
-    .chat-box {
-      height: 300px;
-      overflow-y: auto;
-      background: #020617;
-      padding: 10px;
-      border: 1px solid #1e293b;
-      margin-bottom: 10px;
-    }
-
-    .bot, .user {
-      margin: 8px 0;
-      padding: 8px;
-      border-radius: 6px;
-      max-width: 85%;
-    }
-
-    .bot {
-      background: #1e293b;
-      align-self: flex-start;
-    }
-
-    .user {
-      background: #0284c7;
-      align-self: flex-end;
-      text-align: right;
-    }
-
-    input {
-      width: 100%;
-      padding: 10px;
-      border: none;
-      border-radius: 5px;
-      outline: none;
-    }
-
-    .disclaimer {
-      font-size: 11px;
-      color: #94a3b8;
-      margin-top: 10px;
-      text-align: center;
-    }
-  </style>
+    <title>Shivratri Blessings</title>
+    <style>
+        body {
+            background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 100px;
+        }
+        h1 {
+            font-size: 40px;
+        }
+        p {
+            font-size: 22px;
+            margin: 20px;
+        }
+        button {
+            padding: 12px 25px;
+            font-size: 18px;
+            background-color: #8e44ad;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #9b59b6;
+        }
+    </style>
 </head>
 <body>
 
-<div class="container">
-  <h1>Wellness.ai</h1>
+    <h1>🌙 Shivratri Blessings</h1>
+    <p id="blessing">Click below to receive a blessing ✨</p>
+    <button onclick="generateBlessing()">Receive Blessing</button>
 
-  <div class="chat-box" id="chatBox">
-    <div class="bot">
-      Hi. I’m Wellness.ai.  
-      I help with emotional awareness and stress relief.  
-      Tell me how you’re feeling.
-    </div>
-  </div>
+    <script>
+        const blessings = [
+            "May you have strength like Shiva.",
+            "May your heart stay calm like the Himalayas.",
+            "May peace always protect you.",
+            "May your smile stay powerful and bright.",
+            "May you always walk with courage and grace.",
+            "Tonight I pray that you are always safe and happy."
+        ];
 
-  <input type="text" id="userInput" placeholder="Type your feeling and press Enter">
-
-  <div class="disclaimer">
-    This project is for educational purposes only.  
-    It is not a medical or therapeutic service.
-  </div>
-</div>
-
-<script>
-  const chatBox = document.getElementById("chatBox");
-  const userInput = document.getElementById("userInput");
-
-  userInput.addEventListener("keypress", function(e) {
-    if (e.key === "Enter" && userInput.value.trim() !== "") {
-      addMessage(userInput.value, "user");
-      generateResponse(userInput.value.toLowerCase());
-      userInput.value = "";
-    }
-  });
-
-  function addMessage(text, sender) {
-    const msg = document.createElement("div");
-    msg.className = sender;
-    msg.innerText = text;
-    chatBox.appendChild(msg);
-    chatBox.scrollTop = chatBox.scrollHeight;
-  }
-
-  function generateResponse(input) {
-    let response = "";
-
-    if (input.includes("stress") || input.includes("tired")) {
-      response =
-        "It sounds like you’re under pressure. Try this: inhale slowly for 4 seconds, hold for 4, exhale for 6. Small pauses help reset the mind.";
-    }
-    else if (input.includes("sad") || input.includes("down")) {
-      response =
-        "Feeling low can be heavy. Writing one thing that bothered you today can sometimes make it feel more manageable.";
-    }
-    else if (input.includes("angry") || input.includes("mad")) {
-      response =
-        "Anger usually means something important feels threatened. Take a short pause and step away from the trigger if possible.";
-    }
-    else if (input.includes("happy") || input.includes("good")) {
-      response =
-        "That’s good to hear. Noticing positive moments helps strengthen emotional balance.";
-    }
-    else if (input.includes("hopeless") || input.includes("worthless")) {
-      response =
-        "You deserve support beyond a chatbot. Please consider talking to a trusted adult, teacher, or mental health professional.";
-    }
-    else {
-      response =
-        "Thank you for sharing. Can you describe your feeling a little more?";
-    }
-
-    setTimeout(() => addMessage(response, "bot"), 500);
-  }
-</script>
+        function generateBlessing() {
+            const randomIndex = Math.floor(Math.random() * blessings.length);
+            document.getElementById("blessing").innerText = blessings[randomIndex];
+        }
+    </script>
 
 </body>
 </html>
